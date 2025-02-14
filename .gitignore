@@ -1,0 +1,6 @@
+# whatever these are
+*.idea
+*DS_Store
+
+# Any folder releated to debugging in CLION
+*.dSYM

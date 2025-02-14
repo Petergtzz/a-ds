@@ -12,12 +12,9 @@
 //  Worst Case: Array is in asc to dec order O(n^2)
 
 #define MAX_SIZE 10
-#define rand(state, max) xorshift32(state, max)
 
 typedef struct {
     int32_t items[MAX_SIZE];
-    // int32_t count;
-    // int32_t capacity;
 } Int32Array;
 
 void swap(int32_t *x, int32_t *y)
@@ -29,7 +26,7 @@ void swap(int32_t *x, int32_t *y)
 
 void insertion_sort(Int32Array *input)
 {
-    // Loop over all a
+    // Loop over input
     for(int i = 1; i < MAX_SIZE; i++)
     {
         // Assign ith element to j 
@@ -48,13 +45,13 @@ int main(int argc, char **argv)
 {
     Int32Array input = {0};
     
-    // Seed
-    XorShift32_state state = {.a = 0xB5556};
+    // Seed (any number is valid)
+    XorShift32_state state = {.a = 0x1668E36};
 
     printf("Unsorted Array:\n");
     for(int i = 0; i < MAX_SIZE; i++)
     {
-        int32_t number = rand(&state, 100);
+        int32_t number = xorshift32(&state);
         input.items[i] = number;
         printf("%d\n", input.items[i]);
     }
